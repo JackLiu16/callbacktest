@@ -1,7 +1,6 @@
 #coding=utf-8
 from f_login import Mylogin
 
-ml = Mylogin()
 # ml1 = Mylogin()
 
 user = {
@@ -9,10 +8,14 @@ user = {
     "2":"bob"
 }
 
-@ml.user_loader
-def load_user(user_id):
-    return "login {}".format(user.get(user_id,"test"))
+@Mylogin.user_loader
+def load_user(user_id="1"):
+    # print user_id
+    # print user
+    return user[user_id]
+    # return user.get(user_id,default="test")
 
+# print load_user("2")
 # load_user()
 # print "#"*50
 # try:

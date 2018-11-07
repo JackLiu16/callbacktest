@@ -11,12 +11,17 @@ class Mylogin(object):
         self.user_callback = callback
         return callback
  
-    def reload_user(self):
-        user_id = ctx.ses_stack.keys()[-1]
+    def reload_user(self, user_id):
+        # print ctx.ses_stack.keys()
+        if ctx.ses_stack.keys() != []:
+            print "test"
+            user_id = ctx.ses_stack.keys()[-1]
         user = self.user_callback(user_id)
         ctx.ctx_stack.setdefault(user)
         return user
 
-    def _get_user(self):
-        reload_user()
-
+    def _get_user(self, user_id="1"):
+        # print self.reload_user(user_id)
+        return self.reload_user(user_id)
+Mylogin = Mylogin()
+# Mylogin.reload_user("1")
