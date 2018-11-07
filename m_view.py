@@ -1,4 +1,10 @@
 #coding=utf-8
-from m_login import ml as login_request
+from f_login import login_user, login_required
 
-ml.login_user("jack1")
+login_user("1", "jackliu")
+
+print login_required()
+
+import sys
+print sys.path
+

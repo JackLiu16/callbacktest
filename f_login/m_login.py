@@ -1,6 +1,5 @@
 #coding=utf-8
-import os
-from functools import wraps
+from myflask.ctx import ctx
 
 class Mylogin(object):
 
@@ -9,9 +8,15 @@ class Mylogin(object):
         # self.user = None
 
     def user_loader(self, callback):
-            self.user_callback = callback
+        self.user_callback = callback
         return callback
  
-    def reload_user(self, user_id):
+    def reload_user(self):
+        user_id = ctx.ses_stack.keys()[-1]
         user = self.user_callback(user_id)
+        ctx.ctx_stack.setdefault(user)
         return user
+
+    def _get_user(self):
+        reload_user()
+

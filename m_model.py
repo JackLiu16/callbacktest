@@ -1,5 +1,5 @@
 #coding=utf-8
-from m_login import Mylogin
+from f_login import Mylogin
 
 ml = Mylogin()
 # ml1 = Mylogin()
@@ -9,7 +9,7 @@ user = {
     "2":"bob"
 }
 
-@ml.user_load
+@ml.user_loader
 def load_user(user_id):
     return "login {}".format(user.get(user_id,"test"))
 
